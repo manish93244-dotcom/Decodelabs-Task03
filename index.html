@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecodeLabs - Interactive Web Elements Training Dashboard</title>
+    <style>
+        /* CSS Variables for Clean State Management */
+        :root {
+            --bg-primary: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #60a5fa;
+            --accent-color: #3b82f6;
+            --accent-success: #10b981;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --transition-speed: 0.3s;
+        }
+
+        /* Dark Mode Target Variations */
+        body.is-dark-mode {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --border-color: #334155;
+        }
+
+        /* Standard Global Structure Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo-area h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-area span {
+            color: #10b981;
+        }
+
+        /* Robust Decoupled UI Component States */
+        .btn-theme-toggle {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-theme-toggle:hover {
+            opacity: 0.9;
+        }
+
+        /* Clean Dashboard Layout grid layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* IPO Loop Sandbox Interaction Styles */
+        .interactive-sandbox {
+            background: var(--bg-primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .counter-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+        }
+
+        /* Engineering Standards Prefix Lists */
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .badge-success {
+            background: var(--accent-success);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>Decode<span>Labs</span> | Industrial Training Kit</h1>
+        </div>
+        <button class="btn-theme-toggle js-theme-toggle">
+            <span class="theme-icon">🌙</span> Dark Mode
+        </button>
+    </header>
+
+    <main class="main-layout">
+        
+        <section>
+            <div class="dashboard-card">
+                <h2 class="card-title">Project 3: Interactive Web Elements ⚡</h2>
+                <p>Welcome to the Team! Step into the role of a Frontend Developer at DecodeLabs. This engagement phase is dedicated to mastering <strong>User Experience</strong> instead of static layouts.</p>
+                <br>
+                <p>Before you build complex web applications, you must master the art of using JavaScript to manipulate the Document Object Model (DOM) and create pages that respond to user actions in real-time. By completing this milestone, you prove you can bridge the gap between design and functionality through pure interactive logic.</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h2 class="card-title">The Universal Law of Software Engineering: The IPO Sandbox</h2>
+                <p>Every interactive element follows the <strong>Input-Process-Output (IPO)</strong> loop setup:</p>
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li><strong>Input (The Event):</strong> Clicking the action button below[cite: 98].</li>
+                    <li><strong>Process (The Logic):</strong> The JS variable increments and tracks limits[cite: 99].</li>
+                    <li><strong>Output (The Mutation):</strong> The UI updates explicitly using secure <code>textContent</code> modifications[cite: 100, 171].</li>
+                </ul>
+
+                <div class="interactive-sandbox">
+                    <p>Current Engagement Count Log Matrix</p>
+                    <div class="counter-display js-counter-output">0</div>
+                    <button class="btn-primary js-increment-trigger">Trigger Input Event</button>
+                </div>
+            </div>
+        </section>
+
+        <aside>
+            <div class="dashboard-card">
+                <h2 class="card-title">Qualification Criteria</h2>
+                <ul class="spec-list">
+                    <li>
+                        <span>Project Status</span>
+                        <span class="badge">Mandatory Milestone</span>
+                    </li>
+                    <li>
+                        <span>Batch Scope</span>
+                        <span>2026 Core Delivery</span>
+                    </li>
+                    <li>
+                        <span>System Architecture</span>
+                        <span>Imperative Vanilla JS Dom Tree</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dashboard-card">
+                <h2 class="card-title">Key Engineering Standards</h2>
+                <p>Professional architectural decoupling used across this platform script contract infrastructure:</p>
+                <ul style="margin: 15px 0 0 20px; font-size: 0.95rem;">
+                    <li><strong><code>js-</code> prefix hooks:</strong> Used strictly for selecting DOM targets with JavaScript logic. Never styled inside CSS sheets[cite: 202].</li>
+                    <li><strong><code>is-</code> prefix states:</strong> Used strictly for reflecting dynamic visual mutations on elements[cite: 203].</li>
+                    <li><strong>Memory Lifecycle:</strong> DOM trees run on volatile memory models, rebuilding entirely upon page reloads[cite: 106].</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Architects of the Client-Side Nervous System | Powered by DecodeLabs India [cite: 4, 35]</p>
+        <p style="margin-top: 5px; font-size: 0.8rem;">Contact Registry Verification Node: decodelabs.tech@gmail.com [cite: 250]</p>
+    </footer>
+
+    <script>
+        /**
+         * INITIALIZATION RUNTIME
+         * Ensures robust decoupling by assigning explicit interactions using unique event listeners.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- CORE STATE MANAGEMENT MODULE ---
+            let systemInteractionCounter = 0; // Tracks live interaction state metrics
+            
+            // --- DOM INJECTION CACHE REFERENCES ---
+            const themeToggleBtn = document.querySelector('.js-theme-toggle');
+            const themeIcon = themeToggleBtn.querySelector('.theme-icon');
+            const counterOutput = document.querySelector('.js-counter-output');
+            const incrementTrigger = document.querySelector('.js-increment-trigger');
+            
+            // --- FEATURE 1: VOLATILE STATE DRIVEN COUNTER (THE IPO LOOP INITIALIZATION) ---
+            if (incrementTrigger && counterOutput) {
+                incrementTrigger.addEventListener('click', () => {
+                    // 1. INPUT: Event received via element interaction
+                    
+                    // 2. PROCESS: Handle business logic internally
+                    systemInteractionCounter++;
+                    
+                    // 3. OUTPUT: Secure mutation injecting content safely inside properties via element textContent
+                    counterOutput.textContent = systemInteractionCounter;
+                    
+                    // Architectural conditional rule validation demonstration check
+                    if (systemInteractionCounter >= 10) {
+                        counterOutput.style.color = '#10b981'; // Green visual indicator state mutation change 
+                    }
+                });
+            }
+
+            // --- FEATURE 2: PERSISTENT DARK MODE MUTATION MANAGEMENT ---
+            // LocalStorage initialization checks state presence profile
+            const activeStoredThemeProfile = localStorage.getItem('theme-setting');
+            if (activeStoredThemeProfile === 'dark') {
+                document.body.classList.add('is-dark-mode');
+                themeIcon.textContent = '☀️';
+                themeToggleBtn.innerHTML = '<span class="theme-icon">☀️</span> Light Mode';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    // Toggle explicit visual state layout identity
+                    const isNowDark = document.body.classList.toggle('is-dark-mode');
+                    
+                    // State persistence processing interface updates handling variables explicitly
+                    if (isNowDark) {
+                        localStorage.setItem('theme-setting', 'dark');
+                        themeToggleBtn.innerHTML = '<span class="theme-icon">☀️</span> Light Mode';
+                    } else {
+                        localStorage.setItem('theme-setting', 'light');
+                        themeToggleBtn.innerHTML = '<span class="theme-icon">🌙</span> Dark Mode';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
